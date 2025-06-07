@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>城市热点发票助手 - 本地化智能报销解决方案</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .feature-icon { font-size: 2.5rem; }
+        .invoice-badge { margin: 2px; }
+        .screenshot { box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="logo.png" alt="Logo" width="40" class="d-inline-block align-text-top">
+                发票助手 v2.1
+            </a>
+        </div>
+    </nav>
+
+    <!-- 核心功能展示 -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-8">
+                <h1 class="display-4 mb-4">本地化智能发票管理专家</h1>
+                <div class="alert alert-success">
+                    <strong>绿色安全</strong> - 纯离线单机版 | 无网络依赖 | 数据永不外传
+                </div>
+
+                <!-- 功能亮点 -->
+                <div class="row mt-4 g-4">
+                    <div class="col-md-6">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5><i class="bi bi-file-pdf feature-icon text-danger"></i> 多源导入</h5>
+                                <ul>
+                                    <li>自动识别文件夹新增PDF</li>
+                                    <li>手动拖拽单个文件</li>
+                                    <li>Email附件直接解析</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5><i class="bi bi-bar-chart feature-icon text-primary"></i> 智能分析</h5>
+                                <ul>
+                                    <li>自动生成月度消费报告</li>
+                                    <li>多维数据交叉分析</li>
+                                    <li>可视化图表导出</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 发票类型支持 -->
+                <div class="mt-4">
+                    <h4>支持发票类型：</h4>
+                    <span class="badge bg-success invoice-badge">增值税普通发票</span>
+                    <span class="badge bg-info invoice-badge">铁路电子客票</span>
+                    <span class="badge bg-warning invoice-badge">增值税专用发票</span>
+                    <span class="badge bg-danger invoice-badge">全电发票</span>
+                </div>
+            </div>
+
+            <!-- 截图展示 -->
+            <div class="col-lg-4 mt-lg-0 mt-4">
+                <img src="screenshot.png" alt="界面截图" class="img-fluid rounded screenshot">
+                <div class="mt-3 text-center">
+                    <a href="#download" class="btn btn-primary btn-lg px-5">
+                        <i class="bi bi-download"></i> 立即下载 (v2.1)
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 版本发布 -->
+        <div id="download" class="mt-5">
+            <h3 class="mb-4">版本发布</h3>
+            <div class="list-group">
+                <div class="list-group-item">
+                    <div class="d-flex justify-content-between">
+                        <h5>v2.1.0 - 智能分类升级</h5>
+                        <small>2023-12-15</small>
+                    </div>
+                    <p>新增功能：<br>
+                    • 数电发票元数据解析<br>
+                    • 报销单模板自定义系统<br>
+                    • 自动生成发票台账<br>
+                    <a href="releases/v2.1.0.zip" class="btn btn-sm btn-outline-primary mt-2">下载安装包</a>
+                </div>
+                <div class="list-group-item">
+                    <div class="d-flex justify-content-between">
+                        <h5>v2.0.2 - 稳定性提升</h5>
+                        <small>2023-11-30</small>
+                    </div>
+                    <p>优化改进：<br>
+                    • 修复PDF解析异常问题<br>
+                    • 增强Excel格式兼容性<br>
+                    <a href="releases/v2.0.2.zip" class="btn btn-sm btn-outline-primary mt-2">历史版本</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 功能列表 -->
+        <div class="row mt-5 g-4">
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5><i class="bi bi-cpu"></i> 核心特性</h5>
+                        <ul>
+                            <li>零配置自动运行</li>
+                            <li>多线程快速处理</li>
+                            <li>智能凭证编号生成</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5><i class="bi bi-shield-check"></i> 数据安全</h5>
+                        <ul>
+                            <li>纯本地存储</li>
+                            <li>AES-256加密备份</li>
+                            <li>敏感信息脱敏处理</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5><i class="bi bi-gear"></i> 格式支持</h5>
+                        <ul>
+                            <li>导出标准Excel 2007+</li>
+                            <li>PDF/A归档格式</li>
+                            <li>CSV通用格式</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="mt-5 py-4 bg-dark text-white">
+        <div class="container text-center">
+            <p class="mb-0">© 2023 城市热点软件工作室 | 
+                <a href="https://github.com/your-repo" class="text-white">GitHub仓库</a>
+            </p>
+            <small>运行环境：Windows 10/11 64位系统</small>
+        </div>
+    </footer>
+
+    <!-- 脚本 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
