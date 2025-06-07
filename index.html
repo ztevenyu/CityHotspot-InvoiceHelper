@@ -1,166 +1,530 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>城市热点发票助手 - 本地化智能报销解决方案</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>城市热点发票助手 - 绿色单机发票管理软件</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .feature-icon { font-size: 2.5rem; }
-        .invoice-badge { margin: 2px; }
-        .screenshot { box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        :root {
+            --primary: #28a745;
+            --primary-dark: #218838;
+            --secondary: #f8f9fa;
+            --text: #343a40;
+            --light: #e9ecef;
+            --border: #dee2e6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            background: linear-gradient(135deg, var(--primary), #1e7e34);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo-tagline {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 3px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+        
+        /* 主横幅区域 */
+        .hero {
+            background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%2328a745" stroke-width="1" stroke-dasharray="5,5"/></svg>');
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: #495057;
+        }
+        
+        .highlight {
+            background-color: rgba(40, 167, 69, 0.15);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
+            box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(40, 167, 69, 0.4);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            margin-left: 15px;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(40, 167, 69, 0.1);
+        }
+        
+        /* 功能展示区域 */
+        .features {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--text);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #6c757d;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--border);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            background-color: rgba(40, 167, 69, 0.1);
+            color: var(--primary);
+            font-size: 2.5rem;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .feature-content {
+            padding: 25px;
+        }
+        
+        .feature-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+        
+        .feature-content ul {
+            padding-left: 20px;
+            margin-top: 15px;
+        }
+        
+        .feature-content li {
+            margin-bottom: 10px;
+        }
+        
+        /* 下载区域 */
+        .download {
+            background: linear-gradient(135deg, #f0f7ff, #e6f7ed);
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .download-box {
+            background-color: white;
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        
+        .version-info {
+            background-color: var(--light);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 25px 0;
+            display: inline-block;
+        }
+        
+        .requirements {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .requirement {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            min-width: 200px;
+        }
+        
+        .requirement i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        /* 页脚 */
+        footer {
+            background-color: var(--text);
+            color: white;
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .btn {
+                display: block;
+                width: 100%;
+                max-width: 300px;
+                margin: 10px auto;
+            }
+            
+            .btn-secondary {
+                margin-left: 0;
+                margin-top: 15px;
+            }
+            
+            .download-box {
+                padding: 25px 20px;
+            }
+        }
     </style>
 </head>
-<body class="bg-light">
-    <!-- 导航栏 -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<body>
+    <!-- 头部导航 -->
+    <header>
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="logo.png" alt="Logo" width="40" class="d-inline-block align-text-top">
-                发票助手 v2.1
-            </a>
-        </div>
-    </nav>
-
-    <!-- 核心功能展示 -->
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-lg-8">
-                <h1 class="display-4 mb-4">本地化智能发票管理专家</h1>
-                <div class="alert alert-success">
-                    <strong>绿色安全</strong> - 纯离线单机版 | 无网络依赖 | 数据永不外传
-                </div>
-
-                <!-- 功能亮点 -->
-                <div class="row mt-4 g-4">
-                    <div class="col-md-6">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5><i class="bi bi-file-pdf feature-icon text-danger"></i> 多源导入</h5>
-                                <ul>
-                                    <li>自动识别文件夹新增PDF</li>
-                                    <li>手动拖拽单个文件</li>
-                                    <li>Email附件直接解析</li>
-                                </ul>
-                            </div>
-                        </div>
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
                     </div>
-                    <div class="col-md-6">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5><i class="bi bi-bar-chart feature-icon text-primary"></i> 智能分析</h5>
-                                <ul>
-                                    <li>自动生成月度消费报告</li>
-                                    <li>多维数据交叉分析</li>
-                                    <li>可视化图表导出</li>
-                                </ul>
-                            </div>
-                        </div>
+                    <div>
+                        <div class="logo-text">城市热点发票助手</div>
+                        <div class="logo-tagline">绿色单机 · 高效管理 · 安全无忧</div>
                     </div>
                 </div>
-
-                <!-- 发票类型支持 -->
-                <div class="mt-4">
-                    <h4>支持发票类型：</h4>
-                    <span class="badge bg-success invoice-badge">增值税普通发票</span>
-                    <span class="badge bg-info invoice-badge">铁路电子客票</span>
-                    <span class="badge bg-warning invoice-badge">增值税专用发票</span>
-                    <span class="badge bg-danger invoice-badge">全电发票</span>
-                </div>
-            </div>
-
-            <!-- 截图展示 -->
-            <div class="col-lg-4 mt-lg-0 mt-4">
-                <img src="screenshot.png" alt="界面截图" class="img-fluid rounded screenshot">
-                <div class="mt-3 text-center">
-                    <a href="#download" class="btn btn-primary btn-lg px-5">
-                        <i class="bi bi-download"></i> 立即下载 (v2.1)
-                    </a>
-                </div>
+                <nav class="nav-links">
+                    <a href="#features">功能特点</a>
+                    <a href="#download">下载</a>
+                    <a href="#contact">联系我们</a>
+                </nav>
             </div>
         </div>
+    </header>
 
-        <!-- 版本发布 -->
-        <div id="download" class="mt-5">
-            <h3 class="mb-4">版本发布</h3>
-            <div class="list-group">
-                <div class="list-group-item">
-                    <div class="d-flex justify-content-between">
-                        <h5>v2.1.0 - 智能分类升级</h5>
-                        <small>2023-12-15</small>
-                    </div>
-                    <p>新增功能：<br>
-                    • 数电发票元数据解析<br>
-                    • 报销单模板自定义系统<br>
-                    • 自动生成发票台账<br>
-                    <a href="releases/v2.1.0.zip" class="btn btn-sm btn-outline-primary mt-2">下载安装包</a>
-                </div>
-                <div class="list-group-item">
-                    <div class="d-flex justify-content-between">
-                        <h5>v2.0.2 - 稳定性提升</h5>
-                        <small>2023-11-30</small>
-                    </div>
-                    <p>优化改进：<br>
-                    • 修复PDF解析异常问题<br>
-                    • 增强Excel格式兼容性<br>
-                    <a href="releases/v2.0.2.zip" class="btn btn-sm btn-outline-primary mt-2">历史版本</a>
-                </div>
+    <!-- 主横幅 -->
+    <section class="hero">
+        <div class="container">
+            <h1>高效管理电子发票的<span class="highlight">单机解决方案</span></h1>
+            <p>城市热点发票助手是一款绿色免安装的Windows软件，无需网络连接，帮助您轻松导入、管理和分析各类电子发票，一键生成报销单。</p>
+            <div class="hero-buttons">
+                <a href="#download" class="btn">立即下载 v2.1.0</a>
+                <a href="#features" class="btn btn-secondary">查看功能</a>
             </div>
         </div>
+    </section>
 
-        <!-- 功能列表 -->
-        <div class="row mt-5 g-4">
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5><i class="bi bi-cpu"></i> 核心特性</h5>
+    <!-- 功能特点 -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>强大功能，轻松管理</h2>
+                <p>专为个人和企业设计的发票管理工具，让报销和财务管理变得简单高效</p>
+            </div>
+            
+            <div class="features-grid">
+                <!-- 功能卡片 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-import"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>灵活导入</h3>
+                        <p>支持多种发票导入方式：</p>
                         <ul>
-                            <li>零配置自动运行</li>
-                            <li>多线程快速处理</li>
-                            <li>智能凭证编号生成</li>
+                            <li>自动扫描文件夹导入PDF</li>
+                            <li>手动选择单个/多个文件</li>
+                            <li>从Email直接导入附件</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 功能卡片 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-receipt"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>全面发票支持</h3>
+                        <p>兼容多种发票类型：</p>
+                        <ul>
+                            <li>增值税普通发票</li>
+                            <li>铁路电子客票</li>
+                            <li>增值税专用发票</li>
+                            <li>全面数字化的电子发票</li>
+                            <li>其他常见电子发票格式</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 功能卡片 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>智能处理</h3>
+                        <p>自动化处理流程：</p>
+                        <ul>
+                            <li>自动汇算发票金额</li>
+                            <li>智能分类发票类型</li>
+                            <li>自动识别重复发票</li>
+                            <li>数据异常智能提醒</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 功能卡片 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-excel"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>报销管理</h3>
+                        <p>便捷的报销流程：</p>
+                        <ul>
+                            <li>可视化编辑报销单内容</li>
+                            <li>导出公司格式Excel报销单</li>
+                            <li>一键生成发票联PDF</li>
+                            <li>自定义报销单模板</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 功能卡片 5 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>快速查询</h3>
+                        <p>高效的数据管理：</p>
+                        <ul>
+                            <li>多条件组合快速查询</li>
+                            <li>按日期、金额、类型等筛选</li>
+                            <li>关键信息快速定位</li>
+                            <li>收藏重要发票</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 功能卡片 6 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>数据分析</h3>
+                        <p>深入洞察消费情况：</p>
+                        <ul>
+                            <li>月度/年度消费统计</li>
+                            <li>分类支出占比分析</li>
+                            <li>供应商消费排行</li>
+                            <li>数据可视化图表导出</li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5><i class="bi bi-shield-check"></i> 数据安全</h5>
-                        <ul>
-                            <li>纯本地存储</li>
-                            <li>AES-256加密备份</li>
-                            <li>敏感信息脱敏处理</li>
-                        </ul>
-                    </div>
-                </div>
+        </div>
+    </section>
+
+    <!-- 下载区域 -->
+    <section class="download" id="download">
+        <div class="container">
+            <div class="section-title">
+                <h2>立即体验</h2>
+                <p>绿色单机版，无需安装，解压即用</p>
             </div>
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5><i class="bi bi-gear"></i> 格式支持</h5>
-                        <ul>
-                            <li>导出标准Excel 2007+</li>
-                            <li>PDF/A归档格式</li>
-                            <li>CSV通用格式</li>
-                        </ul>
+            
+            <div class="download-box">
+                <h3>城市热点发票助手 v2.1.0</h3>
+                <div class="version-info">
+                    <i class="fas fa-windows"></i> Windows 版 | 大小: 15.7 MB | 更新日期: 2023-11-15
+                </div>
+                <p>完全离线运行 · 无后台连接 · 无广告 · 无用户数据收集</p>
+                
+                <a href="#" class="btn">下载最新版本</a>
+                
+                <div class="requirements">
+                    <div class="requirement">
+                        <i class="fas fa-laptop"></i>
+                        <h4>系统要求</h4>
+                        <p>Windows 7/8/10/11</p>
+                    </div>
+                    <div class="requirement">
+                        <i class="fas fa-microchip"></i>
+                        <h4>硬件要求</h4>
+                        <p>1GB 内存</p>
+                        <p>100MB 硬盘空间</p>
+                    </div>
+                    <div class="requirement">
+                        <i class="fas fa-lock"></i>
+                        <h4>安全承诺</h4>
+                        <p>所有数据处理均在本地完成</p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- 页脚 -->
-    <footer class="mt-5 py-4 bg-dark text-white">
-        <div class="container text-center">
-            <p class="mb-0">© 2023 城市热点软件工作室 | 
-                <a href="https://github.com/your-repo" class="text-white">GitHub仓库</a>
-            </p>
-            <small>运行环境：Windows 10/11 64位系统</small>
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <h3>城市热点发票助手</h3>
+                <p>绿色单机软件 · 高效发票管理 · 安全无忧体验</p>
+                
+                <div style="margin: 30px 0;">
+                    <p>反馈与支持: zteven@vip. qq.com</p>
+                    <p>商务合作: zteven@vip.qq.com</p>
+                </div>
+                
+                <div class="copyright">
+                    © 2023 城市热点发票助手 | 保留所有权利
+                </div>
+            </div>
         </div>
     </footer>
-
-    <!-- 脚本 -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
